@@ -12,15 +12,16 @@
 using namespace std;
 
 //Function prototype
-void character(char start, int offset);
+void character(char, int);
+void invalidCharacterExcpeption(char);
+void invalidRangeException(int);
 
 int main() 
 {
-	char start;
-	int offset;
+	char start = ' ';
+	int offset = 0;
 	
 	character(start, offset);
-
 
 
 
@@ -33,8 +34,18 @@ int main()
 void character(char start, int offset)
 {
 	cout << "\n\nEnter start key: ";
-	cin >> start;
+		cin >> start;
 
 	cout << "\n\nEnter a number to offset (range is +- 12 from the middle M): ";
-	int offset;
+	cin >> offset;
+}
+
+void invalidCharacterExcpeption(char)
+{
+
+
+}
+
+void invalidRangeException(int)
+{
 }
