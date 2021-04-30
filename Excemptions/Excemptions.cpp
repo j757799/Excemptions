@@ -48,7 +48,7 @@ int main()
 		cout << characterExemption;
 	}
 
-	cout << "\n\nHere is what you entered:\n\n\nStart: " << start << "\t\t" << "Offset: " << offset << endl;
+	cout << "\n\nHere is what you entered:\n\n\nStart: " << start << "\t\t" << "Offset: " << alphaoffset << endl;
 	cout << endl << endl;
 	system("pause");
 	return 0;
@@ -72,12 +72,14 @@ char character(char start)
 
 int offset(int offset)
 {
+	int returnvalue;
 	string integerException = "\nERROR: This is a thrown exception for improper offset input\n\nYou must enter an offset number that doesn't extend beyond the maximum allowed by an alphabet comprised of 26 letters\n\n\nPROGRAM SELF DESTRUCTING....................AAAAAHHHHHHHHHHHHHHHH";
 	
 
-	if (offset )
+	if (offset < 26)
 	{
-		/*return start;*/
+		returnvalue = offset;
+		return returnvalue;
 	}
 	else
 	{
