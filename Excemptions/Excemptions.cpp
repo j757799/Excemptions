@@ -30,6 +30,9 @@ int main()
 	int alphaoffset = 0;
 	alphaOffset set;
 	alphaOffset setReturned;
+
+	string error = "\n\nTry again: ";
+
 	
 	cout << "\n\nEnter start key: ";
 	cin >> set.start;
@@ -58,16 +61,48 @@ int main()
 	cout << "\n\nHere is what you entered:\n\n\nStart: " << set.start << "\t\t" << "Offset: " << set.alphaoffset << endl;
 
 	cout << "\n\nCalling the function: \n";
-	setReturned = returnValues(set);
+
+	/*setReturned = returnValues(set);*/
+
+	try
+	{
+		setReturned = returnValues(set);
+	}
+	catch (string error)
+	{
+		cout << error;
+	}
+	
 
 	cout << endl << endl;
 	system("pause");
 	return 0;
 }
 
-alphaOffset returnValues(alphaOffset)
+alphaOffset returnValues(alphaOffset set)
 {
+	alphaOffset temp;
+	string characterExemption = "\nERROR: This is a thrown exemption for improper character input\n\nYou must enter a letter of the alphabet as a start key\n\n\nPROGRAM SELF DESTRUCTING....................AAAAAHHHHHHHHHHHHHHHH";
 
+	string integerException = "\nERROR: This is a thrown exception for improper offset input\n\nYou must enter an offset number that doesn't extend beyond the maximum allowed by an alphabet comprised of 26 letters\n\n\nPROGRAM SELF DESTRUCTING....................AAAAAHHHHHHHHHHHHHHHH";
+
+	if (!isalpha(set.start))
+	{
+		throw characterExemption;
+	}
+
+	if (isupper(set.start))
+	{
+		if ((int(set.start) + set.alphaoffset) < 65 || (int(set.start) + set.alphaoffset) > 90)
+		{
+			throw integerException;
+		}
+		else
+		{
+			temp.start = static_cast<char>((int(set.start) + set.alphaoffset));
+		}
+
+	}
 }
 
 
