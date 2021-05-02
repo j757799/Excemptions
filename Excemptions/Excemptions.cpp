@@ -29,9 +29,8 @@ int main()
 	char start = ' ';
 	int alphaoffset = 0;
 	alphaOffset set;
-	alphaOffset setReturned;
 
-	string error = "\n\nTry again: ";
+	string error = "\n\nERROR";
 
 	
 	cout << "\n\nEnter start key: ";
@@ -40,39 +39,19 @@ int main()
 	cout << "\n\nEnter a number to offset (the alphabet is comprised of 26 letters, if you choose an offset which falls outside of what is allowed, I will throw an exception): ";
 	cin >> set.alphaoffset;
 
-	/*try
-	{
-		characterReceived = character(start);
-	}
-	catch (string characterExemption)
-	{
-		cout << characterExemption;
-	}
-
-	try
-	{
-		intReceived = offset(alphaoffset);
-	}
-	catch (string characterExemption)
-	{
-		cout << characterExemption;
-	}*/
-
-	cout << "\n\nHere is what you entered:\n\n\nStart: " << set.start << "\t\t" << "Offset: " << set.alphaoffset << endl;
 
 	cout << "\n\nCalling the function: \n";
 
-	/*setReturned = returnValues(set);*/
-
 	try
 	{
-		setReturned = returnValues(set);
+		alphaOffset setReturned = returnValues(set);
+		cout << "\n\nHere is what you entered:\n\n\nStart: " << set.start << "\t\t" << "Offset: " << set.alphaoffset << endl;
+		cout << "\n\nHere is the result: " << setReturned.start << endl;
 	}
 	catch (string error)
 	{
 		cout << error;
 	}
-	
 
 	cout << endl << endl;
 	system("pause");
@@ -100,40 +79,18 @@ alphaOffset returnValues(alphaOffset set)
 		else
 		{
 			temp.start = static_cast<char>((int(set.start) + set.alphaoffset));
+			return temp;
 		}
 
 	}
+	else if ((int(set.start) + set.alphaoffset) < 97 || (int(set.start) + set.alphaoffset) > 122)
+	{
+		throw integerException;
+	}
+	else
+	{
+		temp.start = static_cast<char>((int(set.start) + set.alphaoffset));
+		return temp;
+	}
 }
 
-
-//char character(char start)
-//{
-//	string characterExemption = "\nERROR: This is a thrown exemption for improper character input\n\nYou must enter a letter of the alphabet as a start key\n\n\nPROGRAM SELF DESTRUCTING....................AAAAAHHHHHHHHHHHHHHHH";
-//	string exceptionString = "\nERROR: must enter a letter of the alphabet.";
-//	
-//		if (isalpha(start))
-//		{
-//			return start;
-//		}
-//		else
-//		{
-//			throw characterExemption;
-//		}
-//}
-//
-//int offset(int offset)
-//{
-//	
-//	string integerException = "\nERROR: This is a thrown exception for improper offset input\n\nYou must enter an offset number that doesn't extend beyond the maximum allowed by an alphabet comprised of 26 letters\n\n\nPROGRAM SELF DESTRUCTING....................AAAAAHHHHHHHHHHHHHHHH";
-//	
-//
-//	if (offset < 26)
-//	{
-//		return offset;
-//	}
-//	else
-//	{
-//		throw integerException;
-//	}
-//
-//}
