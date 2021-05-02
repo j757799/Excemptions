@@ -1,7 +1,7 @@
 //Name: Jesse Picker
-//Date: x/x/2020
-//Project Name: 
-//Project Description:
+//Date: 5/2/2021
+//Project Name: Excemptions #15a
+//Project Description: Calculates character offsets, throwing exceptions in error conditions.
 
 //Libraries
 #include<iostream>
